@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -44,25 +44,34 @@
                                 
                             <br>
 
-
+                          <a href="{{route('product.create')}}">Nuevo producto</a>      
                         <div class="container mt-4">
                             <div class="row justify-content-md-center">
                                 <div class="col-auto">
                                        
                                 <table class="table table-dark table-hover">
                                     <thead class="bg-primary text-white">
+                                        <th>id</th>
                             <th>Productos</th>
                             <th>Precio Unitario</th>
                             <th>stock</th>
+                               <th>Options</th>
+
 
                             
                         </thead>
                         <tbody>
                             @foreach($products as $registro)
                             <tr>
+                                 <td>{{$registro->id}}</td>
                                 <td>{{$registro->name}}</td>
                                 <td>{{$registro->unit_price}}</td>
                                 <td>{{$registro->stock}}</td>
+                                <tr>
+                                    <td><a href="{{route('product.edit',$registro->id)}}">Editar</a></td>
+                                    <td>Delete</td>
+                                </tr>
+                                 
                             </tr>
                             @endforeach 
                         </tbody>

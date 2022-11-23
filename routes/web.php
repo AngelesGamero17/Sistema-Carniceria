@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RelacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\Http\Controllers\RelacionController@index');  
+Route::get('/products',[RelacionController::class, 'index'])->name('product.index'); 
+Route::get('/products/create', [RelacionController::class, 'create'])->name('product.create');  
+Route::post('/products', [RelacionController::class, 'store'])->name('product.store');  
+Route::get('/products/{id}',[RelacionController::class, 'edit'])->name('product.edit'); 
+Route::put('/products', [RelacionController::class, 'update'])->name('product.update');  
