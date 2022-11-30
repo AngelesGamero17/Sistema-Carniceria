@@ -20,4 +20,5 @@ class RelacionController extends Controller
         return view('Welcome', compact('products','orders','users','conditions','maritals'));
 
     }
+
 }

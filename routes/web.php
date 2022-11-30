@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConditionsController;
+use App\Http\Controllers\MaritalsController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UsersController;
+//use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +20,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','App\Http\Controllers\RelacionController@index');  
+Route::resource('/Conditions',ConditionsController::class)->names('Conditions');
+Route::resource('/Maritals',MaritalsController::class)->names('Maritals');
+Route::resource('/Orders',OrdersController::class)->names('Orders');
+Route::resource('/Products',ProductsController::class)->names('Products');
+Route::resource('/Users',UsersController::class)->names('Users');
+
+//Route::get('/angeles','App\Http\Controllers\RelacionController@index');  
+//Route::get('/ana','App\Http\Controllers\RelacionController@index');  
+//Route::redirect('/angeles', '/ana');
+
+//Route::view('/welcome', 'welcome');
+
+//Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+//Route::get('/gonzalo/{libro}', function (Request $request) {
+  
+   //return $request;
+
