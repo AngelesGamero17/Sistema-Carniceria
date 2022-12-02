@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\user;
+
 
 class UsersController extends Controller
 {
@@ -14,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = user::all();
         return view('Users.index',compact('users'));
     }
 
@@ -25,26 +28,22 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('Users.create');
+        $users = user::all();
+        return view('Users.create',compact('users'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $user = new user();
+     public function store(StoreUserRequest $request){
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
 
-        $user->name=$request->name;
-        $user->surname=$request->surname;
-        $user->cell=$request->cell;
-        $user->address=$request->address;
-        $user->id_marital=$request->id_marital;
-        $user->save();
-        return redirect()->route('Users.index');
+         user::create($validated);
+         return redirect()->route('Users.index');
     }
 
     /**
@@ -66,19 +65,18 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+         $users2 = user::where('id', $id)->first();
+          Log::info($users2);
+         return view('Users.edit', compact('users2'));
+    
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(StoreUserRequest  $request )
     {
-        //
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
+        user::save($validated);
+        return redirect()->route('Users.index');
     }
 
     /**
