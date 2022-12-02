@@ -9,10 +9,11 @@ class product extends Model
 {
     use HasFactory;
     public function orders(){
-        return $this->belongsToMany(Oder::class,'product:order');
+        return $this->belongsToMany(Order::class,'product:order');
     }
 
     public function conditions(){
-        return $this->hasMany(Condition::class,"id_conditions") ;
+        return $this->belongsToMany(condition::class,"product:condition") ;
     }
+
 }

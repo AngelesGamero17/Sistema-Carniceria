@@ -9,10 +9,8 @@ use App\Http\Controllers\UsersController;
 //use Illuminate\Http\Request;
 
 /*
-|--------------------------------------------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
-|
+|------------------------------------------------------------------------
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
@@ -25,10 +23,6 @@ Route::resource('/Maritals',MaritalsController::class)->names('Maritals');
 Route::resource('/Orders',OrdersController::class)->names('Orders');
 Route::resource('/Products',ProductsController::class)->names('Products');
 Route::resource('/Users',UsersController::class)->names('Users');
-
-//Route::get('/angeles','App\Http\Controllers\RelacionController@index');  
-//Route::get('/ana','App\Http\Controllers\RelacionController@index');  
-//Route::redirect('/angeles', '/ana');
 
 //Route::view('/welcome', 'welcome');
 

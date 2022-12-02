@@ -14,21 +14,29 @@
                           <br>
                         <h1>Pestaña de Usuarios</h1>
                         <br>
+                        <a href="{{route('Users.create')}}">Nuevo Usuario</a>
+                        <br>
                             <thead>
+                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Celular</th>
                                 <th>Direccion</th>
                                 <th>ID Estado Civil</th>
+                                <th>Opciones</th>
                                 </thead>
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
+                                        <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->surname}}</td>
                                         <td>{{$user->cell}}</td>
                                         <td>{{$user->address}}</td>
                                         <td>{{$user->id_marital}}</td>
+                                        
+                                        <td><a href="{{route('Users.edit',$user->id)}}">Editar</a></td>
+                                        <td>Delete</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -36,11 +44,7 @@
 
                                  </table>   
 
-            <div class="row mt-3">
-           <div class="col-md-4 offset-md-4">
-            <div class="d-grid mx-auto">
-            <button class="btn btn-dark data-op="1" data-bs-toggle="modal" data-bs-target="texto">
-            <a href="{{route('Users.create')}}" class="fa-solid fa-cicle-plus">Añadir</a>
+           
         </center>
     
 </body>

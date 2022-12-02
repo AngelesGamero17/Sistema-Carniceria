@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class user extends Model
 {
     use HasFactory;
-    public function conditions(){
-        return $this->hasMany(Condition::class,"id_maritals") ;
+
+    protected $fillable = ['name','surname','cell','address','id_marital'];
+    public function maritals(){
+        return $this->belongsToMany(Marital::class,'user:marital');
     }
-    protected $primaryKey = 'id_users';
-    public function products(){
-        return $this->belongsToMany(Product::class, "id_orders");
-    }
+
+
 }
