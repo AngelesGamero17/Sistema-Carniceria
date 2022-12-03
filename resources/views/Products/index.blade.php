@@ -14,11 +14,14 @@
                           <br>
                         <h1>Pestaña de Productos</h1>
                         <br>
+                       
+                        <br>
                             <thead>
                                 <th>Nombre</th>
                                 <th>Precio Unitario</th>
                                 <th>stock</th>
                                 <th>ID Condicion</th>
+                                <th>Options</th>
                                 </thead>
                                 <tbody>
                                     @foreach($products as $product)
@@ -27,6 +30,8 @@
                                         <td>{{$product->unit_price}}</td>
                                         <td>{{$product->stock}}</td>
                                         <td>{{$product->id_condition}}</td>
+                                        <td><a href="{{route('Products.edit',$product->id)}}">Editar</a></td>
+                                        <td>Delete</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -38,7 +43,7 @@
            <div class="col-md-4 offset-md-4">
             <div class="d-grid mx-auto">
             <button class="btn btn-dark data-op="1" data-bs-toggle="modal" data-bs-target="texto">
-            <a href="{{route('Products.create')}}" class="fa-solid fa-cicle-plus">Añadir</a>
+            <a href="{{route('Products.create')}}" class="fa-solid fa-cicle-plus">Nuevo Producto</a>
         </center>
     
 </body>
