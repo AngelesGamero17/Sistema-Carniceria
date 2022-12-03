@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductsController extends Controller
 {
@@ -25,7 +27,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('Products.create');
+        $products = Product::all();
+        return view('Products.create',compact('products'));
     }
 
     /**
@@ -34,16 +37,14 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $products = new product();
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
 
-        $products->name=$request->name;
-        $products->unit_price=$request->unit_price;
-        $products->stock=$request->stock;
-        $products->id_condition=$request->id_condition;
-        $products->save();
-        return redirect()->route('Products.index');
+         product::create($validated);
+         return redirect()->route('Products.index');
     }
 
     /**
@@ -65,8 +66,20 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product17 = product::where('id',$id)->first();
+        Log::info(($product17));
+        return view('Products.edit',compact('product17'));
     }
+    
+    public function update(StoreProductRequest  $request )
+    {
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
+        product::save($validated);
+        return redirect()->route('Products.index');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -75,10 +88,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+   
 
     /**
      * Remove the specified resource from storage.

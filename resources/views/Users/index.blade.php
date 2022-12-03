@@ -14,8 +14,6 @@
                           <br>
                         <h1>Pestaña de Usuarios</h1>
                         <br>
-                        <a href="{{route('Users.create')}}">Nuevo Usuario</a>
-                        <br>
                             <thead>
                                 <th>ID</th>
                                 <th>Nombre</th>
@@ -44,6 +42,11 @@
 
                                  </table>   
 
+            <div class="row mt-3">
+           <div class="col-md-4 offset-md-4">
+            <div class="d-grid mx-auto">
+            <button class="btn btn-dark data-op="1" data-bs-toggle="modal" data-bs-target="texto">
+            <a href="{{route('Users.create')}}" class="fa-solid fa-cicle-plus">Nuevo Usuario</a>
            
         </center>
     

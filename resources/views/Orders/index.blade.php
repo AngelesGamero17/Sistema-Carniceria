@@ -17,12 +17,14 @@
                             <thead>
                                 <th>Peso Total</th>
                                 <th>Precio Total</th>
+                                <th>Opciones</th>
                                 </thead>
                                 <tbody>
                                     @foreach($orders as $order)
                                     <tr>
                                         <td>{{$order->overall_weight}}</td>
                                         <td>{{$order->total_price}}</td>
+                                        <td><a href="{{route('Orders.edit',$order->id)}}">Editar</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

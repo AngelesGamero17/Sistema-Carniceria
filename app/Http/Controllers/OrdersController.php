@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderRequest;
 use App\Models\order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrdersController extends Controller
 {
@@ -25,7 +27,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('Orders.create');
+        $orders = Order::all();
+        return view('Orders.create',compact('orders'));
     }
 
     /**
@@ -34,15 +37,15 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        $order1 = new order();
-      
-        $order1->overall_weight=$request->overall_weight;
-        $order1->total_price=$request->total_price;
-        $order1->save();
-        return redirect()->route('Orders.index');
-    }
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
+
+         order::create($validated);
+         return redirect()->route('Orders.index');
+    }       
 
     /**
      * Display the specified resource.
@@ -63,7 +66,9 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order17 = order::where('id',$id)->first();
+        Log::info(($order17));
+        return view('Orders.edit',compact('order17'));
     }
 
     /**
