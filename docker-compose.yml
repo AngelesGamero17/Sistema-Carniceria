@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  database:
+    image: docker.io/mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=bitnami_myapp
+      - MARIADB_DATABASE=bitnami_myapp
+  laravel:
+    image: docker.io/bitnami/laravel:9
+    ports:
+      - '8000:8000'
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_DATABASE=bitnami_myapp
+      - DB_PASSWORD=bitnami_myapp
+
+    volumes:
+      - './my-project:/app'
+    depends_on:
+      - mariadb
