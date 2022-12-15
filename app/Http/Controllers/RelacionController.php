@@ -17,7 +17,7 @@ class RelacionController extends Controller
         $users = User::all();
         $conditions = Condition::all();
         $maritals = Marital::all();
-        return view('Welcome', compact('products','orders','users','conditions','maritals'));
+        return view('welcome', compact('products','orders','users','conditions','maritals'));
 
     }
 

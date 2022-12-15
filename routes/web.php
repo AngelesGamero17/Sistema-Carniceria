@@ -32,3 +32,7 @@ Route::resource('/Users',UsersController::class)->names('Users');
   
    //return $request;
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

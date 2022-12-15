@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\marital;
+use App\Models\Marital;
 use Illuminate\Http\Request;
 
 class MaritalsController extends Controller
