@@ -14,9 +14,10 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
+        $buscarpor=$request->get('buscarpor');
+        $orders = Order::where('status','=','1')->where('overall_weight','LIKE','%'.$buscarpor.'%')->get();
         return view('Orders.index',compact('orders'));
     }
 

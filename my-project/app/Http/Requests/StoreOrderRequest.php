@@ -26,6 +26,7 @@ class StoreOrderRequest extends FormRequest
         return [
             'overall_weight' => 'required|numeric|max:20',
             'total_price' => 'required|numeric|max:20',
+            'status'=>'required|string|max:1',
         ];
     }
 }

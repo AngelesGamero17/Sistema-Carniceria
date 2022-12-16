@@ -19,6 +19,7 @@ class orderSeeder extends Seeder
       
         $order1->overall_weight=1.8;
         $order1->total_price=1.9;
+        $order1->status=1;
         $order1->save();
     }
 }

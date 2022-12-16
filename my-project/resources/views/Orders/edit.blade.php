@@ -19,8 +19,13 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Precio Total</label>
       <textarea name="total_price" class="form-control" required="">{{ $order17->total_price }}</textarea>
+    </div>
 
-   
+    </div>
+     <div class="form-group">
+      <label for="exampleInputEmail1">Status</label>
+      <textarea name="status" class="form-control" required=""> {{ $order17->status }}</textarea>
+
     </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>

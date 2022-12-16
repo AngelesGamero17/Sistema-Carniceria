@@ -14,9 +14,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $buscarpor=$request->get('buscarpor');
+        $products = Product::where('status','=','1')->where('name','LIKE','%'.$buscarpor.'%')->get();
         return view('Products.index',compact('products'));
     }  
 

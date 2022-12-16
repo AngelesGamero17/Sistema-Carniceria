@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name',50);
             $table->float('unit_price');
             $table->integer('stock');
+            $table->string('status',1);
             $table->timestamps();
 
             $table->foreignId('id_condition')

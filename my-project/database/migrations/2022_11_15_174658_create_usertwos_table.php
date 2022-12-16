@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('surname',40);
             $table->string('cell',40);
             $table->string('address');
+            $table->string('status',1);
             $table->timestamps();
 
             $table->foreignId('id_marital')

@@ -15,9 +15,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = usertwo::all();
+        $buscarpor=$request->get('buscarpor');
+        $users = Usertwo::where('status','=','1')->where('name','LIKE','%'.$buscarpor.'%')->get();
         return view('Users.index',compact('users'));
     }
 

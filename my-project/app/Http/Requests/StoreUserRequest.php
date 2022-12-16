@@ -29,6 +29,7 @@ class StoreUserRequest extends FormRequest
             'cell' => 'required|string|max:9',
             'address' => 'required|string|max:15',
             'id_marital' => 'required|string|max:3',
+            'status'=>'required|string|max:1',
         ];
     }
 }

@@ -33,5 +33,11 @@ Editar
           <label for="exampleInputEmail1">ID Marital</label>
           <textarea name="id_marital" class="form-control" required="" >{{$users2->id_marital}}</textarea>
         </div>
+        </div>
+     <div class="form-group">
+      <label for="exampleInputEmail1">Status</label>
+      <textarea name="status" class="form-control" required=""> {{ $users2->status }}</textarea>
+
+    </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>

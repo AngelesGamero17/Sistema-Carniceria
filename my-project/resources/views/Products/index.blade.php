@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Productos</title>
 </head>
 <body>
+  <nav>
+
 <ul class="nav nav-tabs card-header-tabs">
-<li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link " aria-current="true" href="{{'/home'}}">Inicio</a>
       </li>
 
@@ -27,8 +30,16 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('Orders.index')}}">Pedidos</a>
-      </li>
-    </ul>
+      </li> 
+      
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      <form class="d-flex">
+            <input name=buscarpor class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"  >
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
+
+</ul>
+</nav>
     
     <center>
                     <table class="table table-secondary table-hover">

@@ -18,11 +18,12 @@ class userSeeder extends Seeder
     {
         $user = new usertwo();
 
-        $user->name='lol';
-        $user->surname='lol';
+        $user->name='Angeles';
+        $user->surname='Gamero';
         $user->cell='987654321';
-        $user->address='lol';
+        $user->address='Cooperativa Santa Isabel';
         $user->id_marital=2;
+        $user->status=1;
         $user->save();
     }
 }

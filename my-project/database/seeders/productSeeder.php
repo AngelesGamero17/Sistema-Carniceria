@@ -17,10 +17,11 @@ class productSeeder extends Seeder
     {
         $products = new product();
 
-        $products->name='lol';
+        $products->name='Foca';
         $products->unit_price=2.8;
         $products->stock=9;
         $products->id_condition=1;
+        $products->status=1;
         $products->save();
     }
 }

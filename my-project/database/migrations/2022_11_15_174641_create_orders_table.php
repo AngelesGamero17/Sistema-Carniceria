@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('overall_weight');
             $table->float('total_price');
+            $table->string('status',1);
             $table->timestamps();
         });
     }

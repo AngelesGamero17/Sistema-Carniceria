@@ -28,6 +28,12 @@
       <li class="nav-item">
         <a class="nav-link active" href="{{route('Orders.index')}}">Pedidos</a>
       </li>
+
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      <form class="d-flex">
+            <input name=buscarpor class="form-control me-2" type="search" placeholder="Buscar " aria-label="Search" >
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
     </ul>
     
     <center>
