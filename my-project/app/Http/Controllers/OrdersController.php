@@ -17,8 +17,10 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         $buscarpor=$request->get('buscarpor');
-        $orders = Order::where('status','=','1')->where('overall_weight','LIKE','%'.$buscarpor.'%')->get();
-        return view('Orders.index',compact('orders'));
+        $orders = Order::where('status','=','0')->where('overall_weight','LIKE','%'.$buscarpor.'%')->orwhere('total_price','LIKE','%'.$buscarpor.'%')->get();
+        $orders1 = Order::where('status','=','1')->where('overall_weight','LIKE','%'.$buscarpor.'%')->orwhere('total_price','LIKE','%'.$buscarpor.'%')->get();
+        
+        return view('Orders.index',compact('orders','orders1'));
     }
 
     /**
@@ -27,7 +29,7 @@ class OrdersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
         $orders = Order::all();
         return view('Orders.create',compact('orders'));
     }
@@ -79,10 +81,19 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOrderRequest $request, $order17)
     {
-        //
-    }
+
+        Log::info($request->all());
+        //Validando datos
+        $validated = $request->validated();
+        $order1=Order::find($order17);
+        $order1->overall_weight=$request->overall_weight;
+        $order1->total_price=$request->total_price;
+        $order1->status=$request->status;
+        $order1->save();
+         return redirect()->route('Orders.index');
+    }       
 
     /**
      * Remove the specified resource from storage.
@@ -90,8 +101,10 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($order)
     {
-        //
+        $order=Order::find($order);
+        $order->delete();
+        return redirect()->route('Orders.index');
     }
 }

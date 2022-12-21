@@ -29,7 +29,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $users = user::all();
+        $users = Usertwo::all();
         return view('Users.create',compact('users'));
     }
     /**
@@ -43,7 +43,7 @@ class UsersController extends Controller
         //Validando datos
         $validated = $request->validated();
 
-         user::create($validated);
+         Usertwo::create($validated);
          return redirect()->route('Users.index');
     }
 
@@ -66,17 +66,24 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-         $users2 = user::where('id', $id)->first();
+         $users2 = Usertwo::where('id', $id)->first();
           Log::info($users2);
          return view('Users.edit', compact('users2'));
     
     }
-    public function update(StoreUserRequest  $request )
+    public function update(StoreUserRequest $request,$users2)
     {
         Log::info($request->all());
         //Validando datos
         $validated = $request->validated();
-        user::save($validated);
+        $user=Usertwo::find($users2);
+        $user->name = $request->name;
+        $user->surname=$request->surname;
+        $user->cell=$request->cell;
+        $user->address=$request->address;
+        $user->id_marital=$request->id_marital;
+        $user->status=$request->status;
+        $user->save();
         return redirect()->route('Users.index');
     }
 
@@ -86,8 +93,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user)
     {
-        //
+        $user=Usertwo::find($user);
+        $user->delete();
+        return redirect()->route('Users.index');
     }
 }

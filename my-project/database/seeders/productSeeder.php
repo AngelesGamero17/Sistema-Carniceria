@@ -17,7 +17,7 @@ class productSeeder extends Seeder
     {
         $products = new product();
 
-        $products->name='Foca';
+        $products->name='lol';
         $products->unit_price=2.8;
         $products->stock=9;
         $products->id_condition=1;

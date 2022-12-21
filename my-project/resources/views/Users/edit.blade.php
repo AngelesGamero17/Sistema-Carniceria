@@ -1,4 +1,8 @@
-Editar
+<br>
+<br>
+<center>
+<h2>Editar</h2>
+</center>
 @if ($errors->any())
 
     <div class="alert alert-danger">
@@ -10,9 +14,11 @@ Editar
     </div>
 @endif
 
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('Users.store')}}">
-       @csrf
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('Users.update',$users2)}}">   
+@csrf
+       @method('put')
+       <div class="container">
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre</label>
           <input type="text" id="title" name="name" class="form-control" required="" value="{{$users2->name}}">
@@ -33,7 +39,6 @@ Editar
           <label for="exampleInputEmail1">ID Marital</label>
           <textarea name="id_marital" class="form-control" required="" >{{$users2->id_marital}}</textarea>
         </div>
-        </div>
      <div class="form-group">
       <label for="exampleInputEmail1">Status</label>
       <textarea name="status" class="form-control" required=""> {{ $users2->status }}</textarea>
@@ -41,3 +46,5 @@ Editar
     </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
+      </div>
+</div>

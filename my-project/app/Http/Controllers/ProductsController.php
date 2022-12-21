@@ -72,12 +72,18 @@ class ProductsController extends Controller
         return view('Products.edit',compact('product17'));
     }
     
-    public function update(StoreProductRequest  $request )
+    public function update(StoreProductRequest  $request,$product17)
     {
         Log::info($request->all());
         //Validando datos
         $validated = $request->validated();
-        product::save($validated);
+        $products=Product::find($product17);
+        $products->name=$request->name;
+        $products->unit_price=$request->unit_price;
+        $products->stock=$request->stock;
+        $products->id_condition=$request->id_condition;
+        $products->status=$request->status;
+        $products->save();
         return redirect()->route('Products.index');
     }
 
@@ -97,8 +103,12 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product)
     {
-        //
+        $product=Product::find($product);
+        $product->delete();
+        return redirect()->route('Products.index');
+
     }
 }
+
