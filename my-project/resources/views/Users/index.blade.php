@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
@@ -42,6 +43,20 @@
     <br>
     <br>
     <center>
+
+    -------------
+    <center><br>
+    <div class="container">
+      
+        <h5>Consultar DNI</h5>
+        <input type="text" id="documento">
+        <button class="btn btn-outline-danger btn-sm" id="buscar">Buscar</button><br> <br>
+        <input type="text" id="apellidoPaterno" placeholder="apellido paterno"> <br>
+        <input type="text" id="apellidoMaterno" placeholder="apellido materno"><br>
+        <input type="text" id="nombre" placeholder="nombres">
+    </div>   
+  </center>
+    -------------
                  <div class="container"  style="background-color:#D7BDE2  ;">
                     <table class="table  table-hover" style="background-color:#D7BDE2 ;">
                         <thead class="bg-#D7BDE2  text-white">
@@ -112,4 +127,27 @@
 </div>
 </div>
 </body>
+
+  <script>
+    $('#buscar').click(function(){
+      dni=$('#documento').val();
+      $.ajax({
+        url:"ConsultaDNI.php",
+        type:'post',
+        data:'dni='+dni,
+        dataType:'json',
+        success:function(r){
+          if(r.numeroDocumento==dni){
+            $('#apellidoPaterno').val(r.apellidoPaterno);
+            $('#apellidoMaterno').val(r.apellidoMaterno);
+            $('#nombre').val(r.nombres);
+          }else{
+            alert('r.e');
+          }
+
+        }
+      });
+    });
+  </script>
+
 </html>
